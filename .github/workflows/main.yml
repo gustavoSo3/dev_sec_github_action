@@ -1,7 +1,7 @@
 name: Primera Github Action
 
 on:
-  pull_request:
+  push:
     branches: [ main ]
 
 jobs:
