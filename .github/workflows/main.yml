@@ -10,10 +10,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     
     - name: Print PR details
       run: |
         echo "Hello World"
         echo "Author: ${{ github.actor }}"
         echo "Last Commit: ${{ github.event.pull_request.head.sha }}"
-        git diff ${{ github.event.pull_request.base.ref }} ${{ github.event.pull_request.head.ref }}
+        git diff ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
+
