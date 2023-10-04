@@ -1,0 +1,19 @@
+name: Primera Github Action
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  print-details:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Print PR details
+      run: |
+        echo "Hello World"
+        echo "Author: ${{ github.actor }}"
+        echo "Last Commit: ${{ github.event.pull_request.head.sha }}"
+        git diff ${{ github.event.pull_request.base.ref }} ${{ github.event.pull_request.head.ref }}
